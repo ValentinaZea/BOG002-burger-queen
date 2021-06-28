@@ -1,0 +1,92 @@
+{
+    "desayuno": [
+        {
+            "item": "Café Americano",
+            "precio": 5
+        },
+        {
+            "item": "Café con leche",
+            "precio": 7
+        },
+        {
+            "item": "Sandwich de jamón y queso",
+            "precio": 10
+        },
+        {
+            "item": "Jugo de frutas natural",
+            "precio": 7
+        }
+    ],
+    "almuerzo": [
+        {
+            "hamburguesas": [
+                {
+                    "item" : "Hamburguesa simple",
+                    "precio" : 10,
+                    "tipo": [
+                        "Res",
+                        "Pollo",
+                        "Vegetariana"
+                    ],
+                    "adiciones":[
+                        {
+                            "item": "Huevo",
+                            "precio": 1
+                        },
+                        {
+                            "item": "Queso",
+                            "precio": 1
+                        }
+                    ]
+                },
+                {
+                    "item" : "Hamburguesa doble",
+                    "precio" : 15,
+                    "tipo": [
+                        "Res",
+                        "Pollo",
+                        "Vegetariana"
+                    ],
+                    "adiciones":[
+                        {
+                            "item": "Huevo",
+                            "precio": 1
+                        },
+                        {
+                            "item": "Queso",
+                            "precio": 1
+                        }
+                    ]
+                }
+            ],
+            "acompañamientos":[
+                {
+                    "item": "Papas fritas",
+                    "precio": 5
+                },
+                {
+                    "item": "Aros de cebolla",
+                    "precio": 5
+                }
+            ],
+            "bebidas":[
+                {
+                    "item": "Agua 500ml",
+                    "precio": 5
+                },
+                {
+                    "item": "Agua 750ml",
+                    "precio": 7
+                },
+                {
+                    "item": "Bebida/gaseosa 500ml",
+                    "precio": 7
+                },
+                {
+                    "item": "Bebida/gaseosa 750ml",
+                    "precio": 10
+                }
+            ]
+        }
+    ]
+}
