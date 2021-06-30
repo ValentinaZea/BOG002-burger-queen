@@ -8,9 +8,6 @@ class Orders extends Component {
         const role = "orders";
     return(
         <div className="main-background">
-            <h1>
-                Soy Historial Ordenes
-            </h1>
             <NavBar role={role}></NavBar>
         </div>
     )

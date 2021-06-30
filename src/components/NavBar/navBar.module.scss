@@ -1,7 +1,87 @@
+$primary-color: #E47209;
+$secondary-color: #FFC700;
+$third-color: #FF8997;
+$primary-font: 'Inter', sans-serif;
 .icon{
     width: 7rem;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+}
+
+.roleIcon{
+    width: 5rem;
 }
 
 .orders{
     display: none;
 }
+
+.textLink{
+    text-decoration: none;
+}
+
+.navBar{
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+    padding: 0.5rem 3rem;
+}
+
+@mixin navButtons($color){
+    width: 200px;
+    height: 75%;
+    border-radius: 20px 20px 0px 0px;
+    border: none;
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    background-color: $color;
+    margin: 0rem 0.2rem;
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.btnNav1{
+    @include navButtons($secondary-color)
+}
+
+.btnNav2{
+    @include navButtons($primary-color)
+}
+
+.btnNavNone2{
+    display: none;
+}
+
+.navContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#noSelected{
+    opacity: 0.5;
+}
+
+#selected{
+    opacity: 1;
+}
+
+.role{
+    font-family: $primary-font;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    background-color: $primary-color;
+    opacity: 0.8;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    padding: 0.6rem;
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+#changeRole{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+

@@ -1,0 +1,117 @@
+$primary-color: #E47209;
+$secondary-color: #FFC700;
+$third-color: #FF8997;
+$four-color: #B12000;
+$primary-font: 'Inter', sans-serif;
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+} 
+
+hr{
+    width: 90%;
+}
+.menuTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 13%;
+}
+.otherColumn{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 12% 88%;
+}
+.categoryColumn{
+    height: 92%;
+    margin-top: 75%;
+    display: grid;
+    grid-template-rows: 33% 33% 34%;
+    // justify-items: flex-end;
+}
+.menuColumn{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    align-items: center;
+}
+
+.column{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    align-items: center;
+    margin: 0rem 0.2rem;
+}
+
+
+@mixin mealButtons($color){
+    width: 100%;
+    height: 8%;
+    border-radius: 20px 20px 0px 0px;
+    border: none;
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    background-color: $color;
+    margin: 0rem 0.2rem;
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.breakfast{
+    @include mealButtons($secondary-color)
+}
+
+.lunch{
+    @include mealButtons($primary-color)
+}
+
+@mixin categoryButtons($color){
+    // width: 140%;
+    //height: 25%;
+    // width: 67px;
+    // height: 200px;
+    width: 80%;
+    height: 78%;
+    border-radius: 20px 0px 0px 20px;
+    border: none;
+    font-family: $primary-font;
+    //font-size: 1.5rem;
+    background-color: $color;
+    //margin: 0rem 0.2rem;
+    align-self: center;
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.firstCategory{
+    @include categoryButtons($four-color)
+}
+
+.secondCategory{
+    @include categoryButtons($secondary-color)
+}
+
+.thirdCategory{
+    @include categoryButtons($third-color)
+}
+
+.textCategory{
+    transform: rotate(-90deg);
+    font-size: 1.5rem;
+    margin: 0px;
+    text-align: center;
+}
+
+
