@@ -31,7 +31,7 @@ hr{
     margin-top: 75%;
     display: grid;
     grid-template-rows: 33% 33% 34%;
-    // justify-items: flex-end;
+    justify-items: flex-end;
 }
 .menuColumn{
     height: 100%;
@@ -76,22 +76,25 @@ hr{
 }
 
 @mixin categoryButtons($color){
-    // width: 140%;
-    //height: 25%;
-    // width: 67px;
-    // height: 200px;
     width: 80%;
-    height: 78%;
+    height: 95%; // Ancho del texto
     border-radius: 20px 0px 0px 20px;
     border: none;
     font-family: $primary-font;
-    //font-size: 1.5rem;
     background-color: $color;
-    //margin: 0rem 0.2rem;
-    align-self: center;
+    align-self: center; // Centra en el contenedor
+
     &:active{
         transform: translateY(-1px);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .textCategory{
+        writing-mode: vertical-lr; 
+        transform: rotate(180deg);
+        hyphens: auto;
+        margin: auto;
+        font-size: 1.3em;
     }
 }
 
@@ -106,12 +109,3 @@ hr{
 .thirdCategory{
     @include categoryButtons($third-color)
 }
-
-.textCategory{
-    transform: rotate(-90deg);
-    font-size: 1.5rem;
-    margin: 0px;
-    text-align: center;
-}
-
-
