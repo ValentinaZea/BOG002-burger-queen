@@ -1,100 +1,112 @@
 {
-    "desayuno": [
+    "Desayuno": [
         {
-            "item": "Café Americano",
-            "precio": 5,
-            "imagen": "https://www.cinemaburger.com/wp-content/uploads/2017/04/bebida-c-cafe.jpg",
-            "imagen2": "https://cdn.shopify.com/s/files/1/0402/8796/1246/products/Americano-2_536x.jpg?v=1591513170"
-        },
-        {
-            "item": "Café con leche",
-            "precio": 7
-        },
-        {
-            "item": "Sandwich de jamón y queso",
-            "precio": 10
-        },
-        {
-            "item": "Jugo de frutas natural",
-            "precio": 7
+            "Para Comer": [
+                {
+                    "Item": "Sandwich de Jamón y Queso",
+                    "Precio": 10,
+                    "Imagen": "https://www.hola.com/imagenes/cocina/recetas/20201020177614/sandwich-pavo-braseado/0-880-170/sandwich-pavo-m.jpg"
+                }
+            ],
+            "Bebidas Calientes": [
+                {
+                    "Item": "Café Americano",
+                    "Precio": 5,
+                    "Imagen": "https://cdn.shopify.com/s/files/1/0402/8796/1246/products/Americano-2_536x.jpg?v=1591513170",
+                    "Imagen2": "https://www.cinemaburger.com/wp-content/uploads/2017/04/bebida-c-cafe.jpg"
+                },
+                {
+                    "Item": "Café con Leche",
+                    "Precio": 7,
+                    "Imagen": "https://todocafe.es/wp-content/uploads/2020/04/cafe_con_leche-1140x760.jpg",
+                    "Imagen2": "https://image.freepik.com/foto-gratis/taza-cafe-leche-mesa-madera-cafeteria-cafeteria_1150-12744.jpg"
+                }
+            ],
+            "Bebidas Frías": [
+                {
+                    "Item": "Jugo de Frutas Natural",
+                    "Precio": 7, 
+                    "Imagen": "https://k-listo.com/wp-content/uploads/2020/04/JUGOS_NATURALES.jpg"
+                }
+            ]
         }
     ],
-    "almuerzo": [
+    "Almuerzo": [
         {
-            "hamburguesas": [
+            "Hamburguesas": [
                 {
-                    "item" : "Hamburguesa simple",
-                    "precio" : 10,
-                    "imagen": "https://scontent.fbog3-1.fna.fbcdn.net/v/t1.6435-9/96677855_104108561309746_7979797069848117248_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=6e5ad9&_nc_ohc=G2ydAc3JoAIAX8pHkGg&_nc_ht=scontent.fbog3-1.fna&oh=492b2a62ecad05202c3b831949065409&oe=60E1B841",
-                    "tipo": [
+                    "Item" : "Hamburguesa Simple",
+                    "Precio" : 10,
+                    "Imagen": "http://www.villagemagazine.ie/wp-content/uploads/2016/11/deceny.jpg",
+                    "Tipo": [
                         "Res",
                         "Pollo",
                         "Vegetariana"
                     ],
-                    "adiciones":[
+                    "Adiciones":[
                         {
-                            "item": "Huevo",
-                            "precio": 1
+                            "Item": "Huevo",
+                            "Precio": 1
                         },
                         {
-                            "item": "Queso",
-                            "precio": 1
+                            "Item": "Queso",
+                            "Precio": 1
                         }
                     ]
                 },
                 {
-                    "item" : "Hamburguesa doble",
-                    "precio" : 15,
-                    "imagen": "http://www.villagemagazine.ie/wp-content/uploads/2016/11/deceny.jpg",
-                    "tipo": [
+                    "Item" : "Hamburguesa Doble",
+                    "Precio" : 15,
+                    "Imagen": "http://www.villagemagazine.ie/wp-content/uploads/2016/11/deceny.jpg",
+                    "Tipo": [
                         "Res",
                         "Pollo",
                         "Vegetariana"
                     ],
-                    "adiciones":[
+                    "Adiciones":[
                         {
-                            "item": "Huevo",
-                            "precio": 1
+                            "Item": "Huevo",
+                            "Precio": 1
                         },
                         {
-                            "item": "Queso",
-                            "precio": 1
+                            "Item": "Queso",
+                            "Precio": 1
                         }
                     ]
                 }
             ],
-            "acompañamientos":[
+            "Acompañamientos":[
                 {
-                    "item": "Papas fritas",
-                    "precio": 5,
-                    "imagen": "https://bfc.isdigitaltime.com/wp-content/uploads/2020/11/papas-fritas.jpg"
+                    "Item": "Papas Fritas",
+                    "Precio": 5,
+                    "Imagen": "https://bfc.isdigitaltime.com/wp-content/uploads/2020/11/papas-fritas.jpg"
                 },
                 {
-                    "item": "Aros de cebolla",
-                    "precio": 5,
-                    "imagen": "https://mejorconsalud.as.com/wp-content/uploads/2015/04/aros-de-cebolla-500x335.jpg"
+                    "Item": "Aros de Cebolla",
+                    "Precio": 5,
+                    "Imagen": "https://mejorconsalud.as.com/wp-content/uploads/2015/04/aros-de-cebolla-500x335.jpg"
                 }
             ],
-            "bebidas":[
+            "Bebidas":[
                 {
-                    "item": "Agua 500ml",
-                    "precio": 5,
-                    "imagen": "https://cdnx.jumpseller.com/fanero/image/8119089/resize/480/480?1585803077"
+                    "Item": "Agua 500ml",
+                    "Precio": 5,
+                    "Imagen": "https://cdnx.jumpseller.com/fanero/image/8119089/resize/480/480?1585803077"
                 },
                 {
-                    "item": "Agua 750ml",
-                    "precio": 7,
-                    "imagen": "https://cdnx.jumpseller.com/fanero/image/8119089/resize/480/480?1585803077"
+                    "Item": "Agua 750ml",
+                    "Precio": 7,
+                    "Imagen": "https://cdnx.jumpseller.com/fanero/image/8119089/resize/480/480?1585803077"
                 },
                 {
-                    "item": "Bebida/gaseosa 500ml",
-                    "precio": 7,
-                    "imagen": "https://porter.com.py/image/cache/catalog/784/7840058/7840058000019-500x500h-jpg.webp"
+                    "Item": "Bebida/Gaseosa 500ml",
+                    "Precio": 7,
+                    "Imagen": "https://porter.com.py/image/cache/catalog/784/7840058/7840058000019-500x500h-jpg.webp"
                 },
                 {
-                    "item": "Bebida/gaseosa 750ml",
-                    "precio": 10,
-                    "imagen":"https://tpvabarrotesaurora.oo.gd/wp-content/uploads/2019/02/79af437311ea7776786fb9c2a9321490.jpg"
+                    "Item": "Bebida/Gaseosa 750ml",
+                    "Precio": 10,
+                    "Imagen":"https://tpvabarrotesaurora.oo.gd/wp-content/uploads/2019/02/79af437311ea7776786fb9c2a9321490.jpg"
                 }
             ]
         }

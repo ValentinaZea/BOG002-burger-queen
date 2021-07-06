@@ -12,7 +12,7 @@ $primary-font: 'Inter', sans-serif;
 } 
 
 hr{
-    width: 90%;
+    width: 100%;
 }
 .menuTitle{
     display: flex;
@@ -36,14 +36,14 @@ hr{
 .menuColumn{
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     float: left;
     align-items: center;
 }
 
 .column{
-    width: 50%;
-    height: 100%;
+    // width: 5rem;
+    // height: 10%;
     display: flex;
     flex-direction: column;
     float: left;
@@ -51,10 +51,15 @@ hr{
     margin: 0rem 0.2rem;
 }
 
+.menuContainer{
+    padding: 0.5rem;
+    overflow: auto;
+}
+
 
 @mixin mealButtons($color){
     width: 100%;
-    height: 8%;
+    height: 100%;
     border-radius: 20px 20px 0px 0px;
     border: none;
     font-family: $primary-font;
@@ -94,7 +99,7 @@ hr{
         transform: rotate(180deg);
         hyphens: auto;
         margin: auto;
-        font-size: 1.3em;
+        font-size: 1.3rem;
     }
 }
 
@@ -108,4 +113,20 @@ hr{
 
 .thirdCategory{
     @include categoryButtons($third-color)
+}
+
+#dishNoSelected{
+    opacity: 0.5;
+}
+
+#dishSelected{
+    opacity: 1;
+}
+
+.categoryTitleContainer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+   // flex-direction: row;
+    height: 8%;
+    width: 100%;
 }

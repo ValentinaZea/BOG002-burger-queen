@@ -1,0 +1,87 @@
+$primary-color: #F1B36E;
+$secundary-color: #FFDE69;
+$primary-font: 'Inter', sans-serif;
+
+.productImage{
+    width: 70%;
+    align-self: center
+}
+
+@mixin background($color){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: $color;
+    width: 290px;
+    height: 350px;
+}
+
+.productCardBreakfast{
+    @include background($secundary-color);
+}
+
+.productCardLunch {
+    @include background($primary-color);
+}
+
+@mixin addProductButton($url_image){
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
+    border: none;
+    background-image: url($url_image);
+    align-self: flex-end;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.addProductBreakfast{
+    $url: "../../assets/images/add_product_yellow.png";
+    @include addProductButton($url);
+}
+
+.addProductLunch {
+    $url: "../../assets/images/add_product_red.png";
+    @include addProductButton($url);
+}
+
+.menuContainer{
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.textItem{
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    margin: 0px;
+    width: 70%;
+    align-self: center;
+}
+
+.imageItemDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.textPrice{
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    margin: 0px;
+}
+.priceAddDiv{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-self: center;
+    align-items: center;
+}
