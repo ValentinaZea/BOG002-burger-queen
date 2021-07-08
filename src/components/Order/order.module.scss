@@ -1,0 +1,29 @@
+$primary-color: #F2B46E;
+$secundary-color: #FFF5D2;
+$third-color: #C8603F;
+
+.buttonsDown{
+    display: flex;
+    width: 17rem;
+    height: 8%;
+}
+
+.buttonCancelOrder {    
+    border-right: 80px solid $secundary-color;
+    border-top: 60px solid $primary-color;
+    border-left: 0px solid $primary-color;
+    border-bottom: 0px solid $secundary-color;
+    border-radius: 20px 0px 0px 0px ;
+}
+.buttonSendToKitchen {
+    border-right: 0px solid $secundary-color;
+    border-top: 0px solid $secundary-color;
+    border-left: 60px solid $secundary-color;
+    border-bottom: 60px solid $primary-color;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.bodyOrder{
+    background-color: $third-color;
+    
+}

@@ -7,22 +7,29 @@ $primary-font: 'Inter', sans-serif;
     align-self: center
 }
 
-@mixin background($color){
+@mixin background($color, $height){
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     background-color: $color;
     width: 290px;
-    height: 350px;
+    height: $height;
 }
 
 .productCardBreakfast{
-    @include background($secundary-color);
+    $height1: 350px;
+    @include background($secundary-color, $height1);
 }
 
 .productCardLunch {
-    @include background($primary-color);
+    $height1: 350px;
+    @include background($primary-color,  $height1);
+}
+
+.productCardLunchHamburger{
+    $height2: 450px;
+    @include background($primary-color,  $height2);
 }
 
 @mixin addProductButton($url_image){
@@ -64,7 +71,7 @@ $primary-font: 'Inter', sans-serif;
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
-    margin: 0px;
+    margin: 0.5rem 0rem 0.5rem 0rem;
     width: 70%;
     align-self: center;
 }
@@ -79,9 +86,51 @@ $primary-font: 'Inter', sans-serif;
     font-size: 1.5rem;
     margin: 0px;
 }
-.priceAddDiv{
+.priceAddDivNoOptions{
     display: grid;
     grid-template-columns: 60% 40%;
     align-self: center;
     align-items: center;
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    margin: 0px;
 }
+
+.priceAddDivOptions{
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    margin: 0px;
+}
+
+#noOptionsHamburger{
+    display:none;
+}
+
+.containerRadioButton{
+    display: grid;
+    grid-template-columns: 25% 26%;
+    font-size: 1.5rem;
+    margin: 0px;
+    justify-content: space-evenly;
+}
+.containerCheckBox{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+   // padding-left: 17.5%;
+}
+.inputRadioButton{
+    display: flex;
+}
+
+.textAdditions{
+    display: flex;
+    justify-content: space-evenly;
+    height: 3.5rem;
+}
+.containerCheckAdd{
+    display: grid;
+    grid-template-columns: 36% 16%;
+    justify-content: space-evenly;
+}
+
