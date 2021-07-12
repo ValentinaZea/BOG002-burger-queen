@@ -6,3 +6,22 @@
     float: left;
     align-items: center;
 }
+.menuTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 13%;
+}
+.orderTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 6%;
+}
+.titles{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}

@@ -14,15 +14,9 @@ $primary-font: 'Inter', sans-serif;
 hr{
     width: 100%;
 }
-.menuTitle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 13%;
-}
+
 .otherColumn{
-    height: 100%;
+    height: 94%;
     display: grid;
     grid-template-columns: 12% 88%;
 }

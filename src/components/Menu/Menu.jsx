@@ -44,15 +44,11 @@ function Menu (props) {
         lunch = styles.dishSelected;
         subCategorySelected (subCategory);
     }
-    function addProduct(item){
-        props.product(item);
-    }
+    // function addProduct(item){
+    //     props.setOrderedProducts(item);
+    // }
     return (
         <div className={styles.mainContainer}>
-            <div className={styles.menuTitle}>
-                <h1>MENÚ</h1>
-                <hr />
-            </div>
             <div className={styles.otherColumn}>
                 <div className={styles.categoryColumn}>
                     <button className={styles.firstCategory} id={firstCategory} onClick={() => setSubCategory("firstCategory")}>
@@ -75,7 +71,7 @@ function Menu (props) {
                         </div>
                     </div>
                     <div className={styles.menuContainer}>
-                        <Product category={category} subCategory={subCategory} product={(item) => addProduct(item)}/>
+                        <Product category={category} subCategory={subCategory} orderedProduct={props.orderedProducts} setOrderedProducts={props.setOrderedProducts}/>
                     </div>
                 </div>
             </div>
