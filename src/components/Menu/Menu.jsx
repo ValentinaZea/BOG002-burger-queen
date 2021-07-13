@@ -71,7 +71,7 @@ function Menu (props) {
                         </div>
                     </div>
                     <div className={styles.menuContainer}>
-                        <Product category={category} subCategory={subCategory} orderedProduct={props.orderedProducts} setOrderedProducts={props.setOrderedProducts}/>
+                        <Product category={category} subCategory={subCategory} menu={props.menu} orderedProducts={props.orderedProducts} setOrderedProducts={props.setOrderedProducts}/>
                     </div>
                 </div>
             </div>

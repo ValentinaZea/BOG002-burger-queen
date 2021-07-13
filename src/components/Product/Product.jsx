@@ -1,6 +1,5 @@
 import React, { useState} from 'react'
 import styles from './product.module.scss'
-import menu from '../../menu.json';
 
 function Product(props) {
 
@@ -9,6 +8,7 @@ function Product(props) {
     const [typeHamburguerDoble, setTypeHamburgerDoble] = useState("Res");
     const [additionsSimple, setAdditionsSimple] = useState({ Huevo: false , Queso: false});
     const [additionsDoble, setAdditionsDoble] = useState({ Huevo: false , Queso: false});
+    let repeatedProduct = false;
 
     if (props.category === "breakfast"){
         formHamburguer = styles.noOptionsHamburger;
@@ -17,13 +17,13 @@ function Product(props) {
         addproduct = styles.addProductBreakfast;
         switch (props.subCategory) {
             case "firstCategory":
-                categoryData = menu.Desayuno[0]['Para Comer'];
+                categoryData = props.menu.Desayuno[0]['Para Comer'];
                 break;
             case "secondCategory":
-                categoryData = menu.Desayuno[0]['Bebidas Calientes'];
+                categoryData = props.menu.Desayuno[0]['Bebidas Calientes'];
                 break;
             case "thirdCategory":
-                categoryData = menu.Desayuno[0]['Bebidas Frías'];
+                categoryData = props.menu.Desayuno[0]['Bebidas Frías'];
                 break;
             default:
                 break;
@@ -33,20 +33,21 @@ function Product(props) {
         addproduct = styles.addProductLunch;
         switch (props.subCategory) {
             case "firstCategory":
-                categoryData = menu.Almuerzo[0]['Hamburguesas'];
+                categoryData = props.menu.Almuerzo[0]['Hamburguesas'];
                 formHamburguer = styles.optionsHamburger;
                 stylesOptions = styles.priceAddDivOptions
                 backgroundColor = styles.productCardLunchHamburger;
                 addButton = styles.noOptionsHamburger;
+                console.log(categoryData[0]["Adiciones"])
                 break;
             case "secondCategory":
-                categoryData = menu.Almuerzo[0]['Acompañamientos'];
+                categoryData = props.menu.Almuerzo[0]['Acompañamientos'];
                 formHamburguer = styles.noOptionsHamburger;
                 stylesOptions = styles.priceAddDivNoOptions;
                 backgroundColor = styles.productCardLunch;
                 break;
             case "thirdCategory":
-                categoryData = menu.Almuerzo[0]['Bebidas'];
+                categoryData = props.menu.Almuerzo[0]['Bebidas'];
                 formHamburguer = styles.noOptionsHamburger;
                 stylesOptions = styles.priceAddDivNoOptions
                 backgroundColor = styles.productCardLunch;
@@ -57,6 +58,7 @@ function Product(props) {
     }
     function AddProduct(item, precio){
         let sendArray = [];
+        const ammount = 1;
         if(item.includes('Hamburguesa')){
             let addition = item.includes('Simple') ? additionsSimple : additionsDoble;
             let typeHamburguer = item.includes('Simple') ? typeHamburguerSimple : typeHamburguerDoble;
@@ -65,12 +67,19 @@ function Product(props) {
                 if(addition[prop] === true) 
                 arrayAdditions.push("-"+ prop);
             }
-        sendArray = arrayAdditions.length >0 ? [item, precio, typeHamburguer, arrayAdditions] : [item, precio, typeHamburguer]
+            sendArray = arrayAdditions.length > 0 ? [item, ammount, precio+arrayAdditions.length, typeHamburguer, arrayAdditions] : [item, ammount, precio, typeHamburguer]
         }
-        else{
-            sendArray = [item, precio];
+        else {
+            sendArray = [item, ammount, precio];
+        }   
+        props.orderedProducts.forEach(elem => {
+            if(JSON.stringify(elem) === JSON.stringify(sendArray)){
+                repeatedProduct = true;
+            }
+        });
+        if(!repeatedProduct){
+            props.setOrderedProducts(products => [...products, sendArray])
         }
-        props.setOrderedProducts(products => [...products, sendArray])      
     }    
     const handleOnChange = (event) => {
         let set = event.target.id.includes('Simple') ? setAdditionsSimple : setAdditionsDoble;
@@ -90,6 +99,7 @@ function Product(props) {
     return (
         <div className={styles.menuContainer}>
             {categoryData.map((data, key) => {
+                console.log(data.Adiciones)
             return (
                 <div key={key} className={backgroundColor} >
                     <div className={styles.imageItemDiv}>

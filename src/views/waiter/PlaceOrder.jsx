@@ -4,6 +4,7 @@ import styles from './waiter.module.scss';
 import NavBar from '../../components/NavBar/NavBar';
 import Menu from '../../components/Menu/Menu';
 import Order from '../../components/Order/Order';
+import menu from '../../menu.json';
 
 function PlaceOrder (){
         const role = "waiter";
@@ -24,11 +25,10 @@ function PlaceOrder (){
                 </div>
                 <div>
                     <div className={styles.bodyContainer}>
-                        <Menu orderedProducts={orderedProducts} setOrderedProducts={setOrderedProducts}></Menu>
+                        <Menu orderedProducts={orderedProducts} menu={menu} setOrderedProducts={setOrderedProducts}></Menu>
                     </div>
-                    <div className={styles.bodyContainer}>
-                        {/* <Order sendProduct={product}></Order> */}
-                        <Order orderedProducts={orderedProducts} setOrderedProducts={setOrderedProducts}></Order>
+                    <div className={styles.bodyContainer}> 
+                        <Order orderedProducts={orderedProducts} menu={menu} setOrderedProducts={setOrderedProducts}></Order>
                     </div>
                 </div> 
             </div>
