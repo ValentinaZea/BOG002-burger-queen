@@ -1,44 +1,37 @@
 import React,{ useState,  useEffect} from 'react';
 import styles from './order.module.scss';
+import PopUp from '../PopUp/popUp.jsx';
 
 function Order(props) {
         const [table, setTable] = useState('mesa1');
+        const [client, setClient] = useState('')
+        const [popUp, setPopUp] = useState(false)
+        const [itemPopUp, setItemPopUp] = useState([]);
+        const [titlePopUp, setTitlePopUp ] = useState("");
         let total = 0;
-        const [arrayPrices, setArrayPrices] = useState(props.orderedProducts.map((elem)=>{
-            return elem[2]
-        }))
-        
-        // useEffect(()=>{
-        //     const arrayPrices = props.orderedProducts.map((elem)=>{
-        //         return elem[2]
-        //     });
-        //     setArrayPrices(arrayPrices)
-        // },[props.orderedProducts])
-;
-        
+
+        function saveClient(e){
+            setClient(e.target.value)
+        }
+    
         function handleChange(e){
             setTable(e.target.value)
         }
 
         function decreaseProduct(key){
             let newArray = [...props.orderedProducts];
-            let newArrayPrices = [...arrayPrices];
-            if(newArray[key][1] > 1){
-                newArray[key][1] = newArray[key][1] - 1;
-                newArrayPrices[key] = props.orderedProducts[key][2] * newArray[key][1];                
+            if(newArray[key].ammount > 1){
+                newArray[key].ammount = newArray[key].ammount - 1;
+                newArray[key].totalPrice = props.orderedProducts[key].unitPrice * newArray[key].ammount; 
                 props.setOrderedProducts(newArray);
-                setArrayPrices(newArrayPrices);
             }            
         }
         
         function increaseProduct(key){
             let newArray = [...props.orderedProducts];
-            let newArrayPrices = [...arrayPrices];
-            newArray[key][1] = newArray[key][1] + 1;
-            //arraprices[key] = props.orderedProducts[key][2] * newArray[key][1];
-            newArrayPrices[key] = props.orderedProducts[key][2] * newArray[key][1]; 
+            newArray[key].ammount = newArray[key].ammount + 1;
+            newArray[key].totalPrice = props.orderedProducts[key].unitPrice * newArray[key].ammount; 
             props.setOrderedProducts(newArray);
-            setArrayPrices(newArrayPrices);
         }
         
         function deleteProduct(key){
@@ -46,17 +39,33 @@ function Order(props) {
             array.splice(key, 1);
             props.setOrderedProducts(array);
         }
-        function deleteAll(){
-            props.setOrderedProducts([]);
+
+        function sendOrder(){
+            if ((client === "")  || (Array.isArray(props.orderedProducts) && !props.orderedProducts.length)) {
+                alert("Por favor llene todos los campos")
+            }
+            else{
+                let confirmedOrder = {client: client, table: table, order: [...props.orderedProducts]};
+                setItemPopUp(confirmedOrder);
+                setPopUp(!popUp);
+                setTitlePopUp("Confirmacion Pedido")
+            }
         }
+
+        const cancelOrder= ()=>{
+            setPopUp(!popUp);
+            setItemPopUp(["¿Desea Cancelar La Orden?"]);
+            setTitlePopUp("Cancelar Orden");
+        }
+
 
         return (
             <div className={styles.orderContainer}>          
                 <div className={styles.hamburgerContainer}>
                     <div className={styles.headerOrder}>
-                        <input className={styles.customerName} placeholder="Nombre Cliente..." id="myText" type="text"/>
+                        <input className={styles.customerName} required placeholder="Nombre Cliente..." id="myText" type="text" onChange={saveClient}/>
                         <div className={styles.divDropdown}>
-                            <select className={styles.dropDown} value={table} onChange={(event)=>handleChange(event)}>
+                            <select className={styles.dropDown} value={table} onChange={handleChange}>
                                 <option className={styles.optionsDropDown} value="mesa1">Mesa 1</option>
                                 <option className={styles.optionsDropDown} value="mesa2">Mesa 2</option>
                                 <option className={styles.optionsDropDown} value="mesa3">Mesa 3</option>
@@ -73,23 +82,23 @@ function Order(props) {
                         <div className={styles.orderedProducts}>
                             {
                                 props.orderedProducts.map((element,key) => {
-                                    total = total + arrayPrices[key];
-                                    let detailsProduct = ((element[0] !== undefined) && (element[0].includes('Hamburguesa'))) ? styles.specificDetailsProduct : styles.noSpecificDetailsProduct;
+                                    total = total + element.totalPrice;
+                                    let detailsProduct = ((element.item !== undefined) && (element.item.includes('Hamburguesa'))) ? styles.specificDetailsProduct : styles.noSpecificDetailsProduct;
                                     return(
                                         <div key={key} className={styles.bodyBox}>
                                             <div className={styles.detailsProduct}>
-                                                <p>{element[0]}</p> 
+                                                <p>{element.item}</p> 
                                                 <div className={detailsProduct}>
-                                                    <p>{element[3]}</p>
-                                                    <p>{element[4]}</p> 
+                                                    <p>{element.type}</p>
+                                                    <p>{element.additions}</p> 
                                                 </div>
                                             </div>
                                             <div className={styles.amountProduct}>
                                                 <button className={styles.decreaseProduct} onClick={()=>decreaseProduct(key)}></button>
-                                                <p>{ element[1]}</p>
+                                                <p>{element.ammount}</p>
                                                 <button className={styles.addProduct} onClick={()=>increaseProduct(key)}></button>
                                             </div>
-                                            <p className={styles.price}>$ {arrayPrices[key]}</p>
+                                            <p className={styles.price}>$ {element.totalPrice}</p>
                                             <button className={styles.trashButton} onClick={()=>deleteProduct(key)}></button>
                                         </div>
                                     )
@@ -102,13 +111,16 @@ function Order(props) {
                         </div>             
                     </div>
                     <div className={styles.buttonsDown}>
-                        <button className={styles.buttonCancelOrder} onClick={() => deleteAll()}>
+                        <button className={styles.buttonCancelOrder} onClick={cancelOrder}>
                             Cancelar Pedido                            
                         </button>                        
-                        <button className={styles.buttonSendToKitchen}>
+                        <button className={styles.buttonSendToKitchen} onClick={sendOrder}>
                             Enviar a la Cocina
                         </button>
                     </div>
+                </div>
+                <div className={popUp ? styles.popUpContainer : styles.noPopUpContainer}>
+                    {popUp ? <PopUp setPopUp={setPopUp} setOrderedProducts={props.setOrderedProducts} titlePopUp={titlePopUp} itemPopUp={itemPopUp}></PopUp> : null}
                 </div>
             </div>
         )

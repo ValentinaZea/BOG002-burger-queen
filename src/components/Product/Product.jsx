@@ -38,7 +38,6 @@ function Product(props) {
                 stylesOptions = styles.priceAddDivOptions
                 backgroundColor = styles.productCardLunchHamburger;
                 addButton = styles.noOptionsHamburger;
-                console.log(categoryData[0]["Adiciones"])
                 break;
             case "secondCategory":
                 categoryData = props.menu.Almuerzo[0]['Acompañamientos'];
@@ -57,8 +56,8 @@ function Product(props) {
         }
     }
     function AddProduct(item, precio){
-        let sendArray = [];
-        const ammount = 1;
+        let sendArray = {};
+        const ammountProduct = 1;
         if(item.includes('Hamburguesa')){
             let addition = item.includes('Simple') ? additionsSimple : additionsDoble;
             let typeHamburguer = item.includes('Simple') ? typeHamburguerSimple : typeHamburguerDoble;
@@ -67,16 +66,23 @@ function Product(props) {
                 if(addition[prop] === true) 
                 arrayAdditions.push("-"+ prop);
             }
-            sendArray = arrayAdditions.length > 0 ? [item, ammount, precio+arrayAdditions.length, typeHamburguer, arrayAdditions] : [item, ammount, precio, typeHamburguer]
+            sendArray = arrayAdditions.length > 0 ? 
+            {item: item, ammount:ammountProduct, unitPrice: precio+arrayAdditions.length, totalPrice: precio+arrayAdditions.length, type: typeHamburguer, additions: arrayAdditions} 
+            : {item: item, ammount:ammountProduct, unitPrice: precio+arrayAdditions.length, totalPrice: precio+arrayAdditions.length, type: typeHamburguer}
         }
         else {
-            sendArray = [item, ammount, precio];
+            sendArray = {item: item, ammount:ammountProduct, unitPrice: precio, totalPrice: precio};
         }   
-        props.orderedProducts.forEach(elem => {
-            if(JSON.stringify(elem) === JSON.stringify(sendArray)){
+        const arrayOrderedProducts = props.orderedProducts.map((elem) => {
+            const { totalPrice, ammount , ...newArrayElem } = elem;
+            return newArrayElem;
+        })
+        const { totalPrice, ammount , ...newArraySendArray } = sendArray;
+        arrayOrderedProducts.forEach((elem) => {
+            if(JSON.stringify(elem) === JSON.stringify(newArraySendArray)){
                 repeatedProduct = true;
             }
-        });
+        })
         if(!repeatedProduct){
             props.setOrderedProducts(products => [...products, sendArray])
         }
@@ -99,7 +105,7 @@ function Product(props) {
     return (
         <div className={styles.menuContainer}>
             {categoryData.map((data, key) => {
-                console.log(data.Adiciones)
+                // console.log(data.Adiciones)
             return (
                 <div key={key} className={backgroundColor} >
                     <div className={styles.imageItemDiv}>

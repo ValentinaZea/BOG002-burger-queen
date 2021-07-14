@@ -1,0 +1,70 @@
+$primary-color: #F1B36E;
+$secundary-color: #FFF5D2;
+$third-color: #E47209;
+$font:  "Inter", sans-serif;
+
+.popUpBox{
+    border-radius: 10px;
+    z-index: 1;
+    width: 40%;
+    height: 60%;
+    background-color: rgb(160, 93, 93); 
+    background-color: $primary-color;
+    border: $secundary-color 3px solid;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+}
+
+.titleContainer{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    text-align: center;
+}
+
+.title{
+    font-family: $font;
+    font-size: 2rem;
+    color: $third-color;
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+}
+
+.bodyContainer{
+    
+    
+}
+.cancelAction{
+    border : none;
+    background-color: transparent;
+    font-family: $font;
+    font-size: 2rem;
+    padding: 0px;
+    margin: 0px;
+    color: $third-color;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.confirmButton{
+    height: 70%;
+    width: 40%;
+    border-radius: 20px;
+    border : none;
+    background-color: $third-color;
+    font-family: $font;
+    font-size: 1.7rem;
+    padding: 0px;
+    margin: 0px;
+    color: $secundary-color;
+    align-self: center;
+    justify-self: center;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
