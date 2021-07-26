@@ -1,0 +1,66 @@
+$primary-color: #F3BB62;
+$secundary-color: #FFF5D2;
+$third-color: #C8603F;
+$fourth-color: #49381D;
+$font:  "Inter", sans-serif;
+$font-size: 1.2rem;
+
+.hamburgerContainer{
+    width: 94%;
+    height: 94%;
+    display: grid;
+    grid-template-rows: 8% 82% 10%;
+    justify-self: center;
+    font-family: $font;
+    font-size: 1.5rem;
+    h3, h2{
+        margin: 0px;
+    }
+}
+.boxTitle{
+    display: grid;
+    grid-template-columns: 45% 30% 15% 10%;
+    text-align: center;
+    align-self: center;
+    color: $secundary-color;
+    font-size: $font-size;
+}
+
+.headerOrder{
+    border-radius: 20px 20px 0px 0px;
+    background-color: $primary-color;
+    color: $fourth-color;
+    text-align: center;
+    // align-items: center;
+}
+
+.bodyOrder{
+    background-color: $third-color;
+    margin: 0.5rem 0px;
+    overflow: auto;
+    padding: 0rem 2rem;
+}
+
+.footerOrder{
+    border-radius: 0px 0px 20px 20px;
+    background-color: $primary-color;
+}
+
+
+.containerDetailProduct{
+    display: grid;
+    grid-template-columns: 45% 30% 25%;
+    align-items: center;
+    justify-items: center;
+}
+
+.additionsContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    // padding-left: 2.5rem;
+    span {
+        margin: 0px;
+        padding: 0px;
+    }
+}

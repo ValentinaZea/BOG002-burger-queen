@@ -1,11 +1,14 @@
 $primary-color: #FFF5D2;
 $second-color: #000000;
+$font: "Inter", sans-serif;
+$font-size: 1.2rem;
 
 @mixin container($color){
-    height: 10%;
+    // height: 10%;
     display: grid;
-    grid-template-columns: 60% 20% 20%;
+    grid-template-columns: 50% 30% 20%;
     color: $color;
+    text-align: center;
 }
 
 .titleContainer{
@@ -13,11 +16,31 @@ $second-color: #000000;
 }
 
 .containerProductsOrder{
-    @include container($second-color)
+    @include container($second-color);
+    overflow-y: auto;
 }
-.containerBox{  
-    padding: 1rem;  
+.containerBox{   
     height: 100%;
     display: grid;
     grid-template-rows: 15% 70% 15%;
+    $font: $font;
+    font-size: $font-size;
+
+}
+.additionsContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding-left: 2.5rem;
+    span {
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+.total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 1.8rem 0px 2.6rem;
 }

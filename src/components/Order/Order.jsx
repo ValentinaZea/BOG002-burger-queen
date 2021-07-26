@@ -1,9 +1,9 @@
-import React,{ useState,  useEffect} from 'react';
+import React,{ useState} from 'react';
 import styles from './order.module.scss';
 import PopUp from '../PopUp/popUp.jsx';
 
 function Order(props) {
-        const [table, setTable] = useState('mesa1');
+        const [table, setTable] = useState('default');
         const [client, setClient] = useState('')
         const [popUp, setPopUp] = useState(false)
         const [itemPopUp, setItemPopUp] = useState([]);
@@ -41,11 +41,11 @@ function Order(props) {
         }
 
         function sendOrder(){
-            if ((client === "")  || (Array.isArray(props.orderedProducts) && !props.orderedProducts.length)) {
+            if ((client === "")  || (Array.isArray(props.orderedProducts) && !props.orderedProducts.length) || (table === 'default')) {
                 alert("Por favor llene todos los campos")
             }
             else{
-                let confirmedOrder = {client: client, table: table, order: [...props.orderedProducts]};
+                let confirmedOrder = {client: client, table: table, state:'to prepare', order: [...props.orderedProducts], requestTime: new Date()};
                 setItemPopUp(confirmedOrder);
                 setPopUp(!popUp);
                 setTitlePopUp("Confirmacion Pedido")
@@ -53,19 +53,24 @@ function Order(props) {
         }
 
         const cancelOrder= ()=>{
-            setPopUp(!popUp);
-            setItemPopUp(["¿Desea Cancelar La Orden?"]);
-            setTitlePopUp("Cancelar Orden");
+            if ((Array.isArray(props.orderedProducts) && !props.orderedProducts.length)) {
+                alert("Acción no válida, campos vacíos")
+            }
+            else{
+                setPopUp(!popUp);
+                setItemPopUp(["¿Desea Cancelar La Orden?"]);
+                setTitlePopUp("");
+            }            
         }
-
 
         return (
             <div className={styles.orderContainer}>          
                 <div className={styles.hamburgerContainer}>
                     <div className={styles.headerOrder}>
-                        <input className={styles.customerName} required placeholder="Nombre Cliente..." id="myText" type="text" onChange={saveClient}/>
+                        <input className={styles.customerName} required placeholder="Nombre Cliente..." id="myText" type="text" onChange={saveClient} value={client}/>
                         <div className={styles.divDropdown}>
                             <select className={styles.dropDown} value={table} onChange={handleChange}>
+                                <option className={styles.optionsDropDown} value="default" defaultValue disabled hidden>Elija mesa</option>
                                 <option className={styles.optionsDropDown} value="mesa1">Mesa 1</option>
                                 <option className={styles.optionsDropDown} value="mesa2">Mesa 2</option>
                                 <option className={styles.optionsDropDown} value="mesa3">Mesa 3</option>
@@ -107,7 +112,7 @@ function Order(props) {
                         </div>       
                         <div className={styles.totalPrice}>
                             <p>Total</p>
-                            <p>${total}</p>
+                            <p>$ {total}</p>
                         </div>             
                     </div>
                     <div className={styles.buttonsDown}>
@@ -120,7 +125,7 @@ function Order(props) {
                     </div>
                 </div>
                 <div className={popUp ? styles.popUpContainer : styles.noPopUpContainer}>
-                    {popUp ? <PopUp setPopUp={setPopUp} setOrderedProducts={props.setOrderedProducts} titlePopUp={titlePopUp} itemPopUp={itemPopUp}></PopUp> : null}
+                    {popUp ? <PopUp setClient={setClient} setTable={setTable} setPopUp={setPopUp} setOrderedProducts={props.setOrderedProducts} titlePopUp={titlePopUp} itemPopUp={itemPopUp}></PopUp> : null}
                 </div>
             </div>
         )

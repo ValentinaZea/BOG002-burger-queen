@@ -1,3 +1,7 @@
+body{ 
+  margin:0; padding:0; height:100%
+}
+
 .main-background {
   position: absolute;
   background-image: url(./assets/images/main_background.png);
@@ -7,4 +11,11 @@
   height: 100%;
   display: grid;
   grid-template-rows: 10% 10% 80%;
+}
+
+.bodyContainer{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  // align-items: center;
 }

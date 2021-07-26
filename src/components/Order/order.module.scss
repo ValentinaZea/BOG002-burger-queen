@@ -8,6 +8,7 @@ $font:  "Inter", sans-serif;
     flex-direction: column;
     width: 90%;
     height: 100%;
+    justify-self: center;
     align-items: center;
 }
 
@@ -198,8 +199,9 @@ hr {
 
 .totalPrice{
     display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5rem 0px 1rem;
     p {
         padding: 0px;
         margin: 0px;
@@ -208,9 +210,10 @@ hr {
 }
 
 .orderedProducts{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow-y: scroll;
+    max-height: 500px;
 }
 
 .popUpContainer{

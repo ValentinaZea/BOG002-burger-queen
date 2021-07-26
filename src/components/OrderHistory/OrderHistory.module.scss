@@ -1,0 +1,89 @@
+$primary-color: #F3BB62;
+$secundary-color: #FFF5D2;
+$third-color: #C8603F;
+$fourth-color: #49381D;
+$font:  "Inter", sans-serif;
+
+// .orderContainer{
+//     display: flex;
+//     flex-direction: column;
+//     width: 90%;
+//     height: 100%;
+//     align-items: center;
+// }
+
+.hamburgerContainer{
+    width: 94%;
+    height: 94%;
+    display: grid;
+    grid-template-rows: 8% 82% 10%;
+    justify-self: center;
+    font-family: $font;
+    font-size: 1.5rem;
+    h3, h2{
+        margin: 0px;
+    }
+}
+
+.headerOrder{
+    border-radius: 20px 20px 0px 0px;
+    background-color: $primary-color;
+    display: grid;
+    grid-template-columns: 38% 50%;
+    text-align: center;
+    align-items: center;
+    color: fourth-color;
+}
+
+.bodyOrder{
+    background-color: $third-color;
+    margin: 0.5rem 0px;
+    overflow: auto;
+}
+
+.itemContainer{
+    display: grid;
+    grid-template-columns: 35% 15% 20% 30%;
+    justify-items: center;
+    align-items: center;
+    color: $secundary-color;
+    padding: 0.5rem 2rem;
+    p{
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: center;
+    }
+}
+
+.footerOrder{
+    border-radius: 0px 0px 20px 20px;
+    background-color: $primary-color;
+}
+
+.cooking{
+    width: 4rem;
+}
+
+.button{
+    width: 80%;
+    border-radius: 20px;
+    border: none;
+    background-color: $secundary-color;
+    color: $third-color
+}
+
+.detailProduct{
+    height: 70%;
+    border-radius: 20px;
+    border: none;
+    background-color: $secundary-color;
+    color: $third-color;
+    font-family: $font;
+    font-size: 1.2rem;
+    padding: 0px 1rem;
+    margin: 0px;
+    justify-self: self-end;
+}
+

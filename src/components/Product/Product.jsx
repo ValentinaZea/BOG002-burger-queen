@@ -8,6 +8,7 @@ function Product(props) {
     const [typeHamburguerDoble, setTypeHamburgerDoble] = useState("Res");
     const [additionsSimple, setAdditionsSimple] = useState({ Huevo: false , Queso: false});
     const [additionsDoble, setAdditionsDoble] = useState({ Huevo: false , Queso: false});
+    // const [ checkbox, setCheckbox] = useState()
     let repeatedProduct = false;
 
     if (props.category === "breakfast"){
@@ -116,15 +117,15 @@ function Product(props) {
                         <p className={styles.textPrice}>${data.Precio}</p>
                         <form id={formHamburguer}>
                             <div className={styles.containerRadioButton}>
-                                <div className={styles.inputRadioButton}><input onChange={() => setTypeHamburger(data.Item, "Res")} type="radio" value="Res" name="typeHamburguer" defaultChecked/> Res </div>
+                                <div className={styles.inputRadioButton}><input onChange={() => setTypeHamburger(data.Item, "Res")} type="radio" value="Res" name="typeHamburguer"/> Res </div>
                                 <div className={styles.inputRadioButton}><input onChange={() => setTypeHamburger(data.Item, "Pollo")} type="radio" value="Pollo" name="typeHamburguer" /> Pollo </div>
                                 <div className={styles.inputRadioButton}><input onChange={() => setTypeHamburger(data.Item, "Vegetariana")} type="radio" value="Vegetariana" name="typeHamburguer" /> Vegetariana </div>
                             </div>
                             <div className={styles.textAdditions}><p>Adiciones</p><p>$1</p></div>
                             <div className={styles.containerCheckAdd}>
                                 <div className={styles.containerCheckBox}>
-                                    <div><input id={"adicion huevo "+ data.Item} onChange={(event) => handleOnChange(event)} type="checkbox" value="Huevo" name="typeAdition" /> Huevo </div>                                
-                                    <div><input id={"addition queso "+ data.Item} onChange={(event) => handleOnChange(event)} type="checkbox" value="Queso" name="typeAdition" /> Queso </div>
+                                    <div><input id={"adicion huevo "+ data.Item} onChange={(event) => handleOnChange(event)} type="checkbox" value="Huevo" name="typeAdition"/> Huevo </div>                                
+                                    <div><input id={"addition queso "+ data.Item} onChange={(event) => handleOnChange(event)} type="checkbox" value="Queso" name="typeAdition"/> Queso </div>
                                 </div>                                
                                 <button className={addproduct} type="button" onClick={() => AddProduct(data.Item, data.Precio)}></button>
                             </div>

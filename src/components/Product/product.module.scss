@@ -13,7 +13,7 @@ $primary-font: 'Inter', sans-serif;
     justify-content: center;
     text-align: center;
     background-color: $color;
-    width: 290px;
+    width: 17rem;
     height: $height;
 }
 
@@ -116,7 +116,7 @@ $primary-font: 'Inter', sans-serif;
 .containerCheckBox{
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
    // padding-left: 17.5%;
 }
 .inputRadioButton{
@@ -130,7 +130,7 @@ $primary-font: 'Inter', sans-serif;
 }
 .containerCheckAdd{
     display: grid;
-    grid-template-columns: 36% 16%;
+    grid-template-columns: 38% 16%;
     justify-content: space-evenly;
 }
 
