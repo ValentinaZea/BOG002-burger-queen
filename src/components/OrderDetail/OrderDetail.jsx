@@ -1,7 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './OrderDetail.module.scss'
+import db from '../../firebase';
 
 function OrderDetail(props) {
+    const [checkedState, setCheckedState] = useState(
+        new Array(props.orders.length).fill(false)
+    );
+    console.log(props.orderPosition)
+    function changeFirebase(state){
+        let orderId = props.orders[props.orderPosition].id;
+        let orderRef = db.collection("orders").doc(orderId);
+        return orderRef.update({
+            state: state
+        })
+    }
+    function sendOrder(){
+        if(props.orders[props.orderPosition].state === "in preparation"){
+            changeFirebase("to deliver")
+            props.setOrderPosition(0)
+        }
+        // const allChecked = document.querySelectorAll("#checked"+props.orderPosition)
+        // Array.from(allChecked).map((elem)=>{
+        //     const value = elem.checked ? console.log(elem.checked) : console.log("no")
+        //     return value
+        // })
+        // // for (const property in allChecked) {
+        // //     const value = allChecked.checked ? console.log(allChecked.checked) : console.log("no")
+        // //     return value
+        // // }
+        // console.log(allChecked)
+    }
+
+    const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+            index === position ? !item : item
+        );
+        setCheckedState(updatedCheckedState);
+        console.log(checkedState)
+    }
+
+    function prepareOrder(){
+        if(props.orders.length > 0){
+            changeFirebase("in preparation")
+        }        
+    }
+    
     return(
         <div className={styles.hamburgerContainer}>
             <div className={styles.headerOrder}>
@@ -25,22 +68,31 @@ function OrderDetail(props) {
                             }
                             return(
                                 <div className={styles.containerDetailProduct} key={key}>
-                                    <div className={styles.additionsContainer} key={key}>
+                                    <div className={styles.additionsContainer}>
                                         <span>{elem.item}</span><span>{itemDetail}</span>
                                     </div>
-                                    {/* <p>{itemDetail}</p> */}
                                     <p>{elem.ammount}</p>
-                                    <input type="checkbox"></input>
+                                    <input key={key} id={"checked"+props.orderPosition} 
+                                    className={props.orders[props.orderPosition].state === "in pre" ? styles.checkbox : styles.none}
+                                    type="checkbox" onChange={() => handleOnChange(key)} checked={checkedState[key]}></input>
                                 </div>
                             )
                         })) 
                         : " "
                     }
                 </div>
-                
             </div>  
-            <div className={styles.footerOrder}>      
-            </div> 
+            <div className={styles.buttonsDown}>
+                <button className={(props.orders.length) > 0  ? styles.buttonCancelOrder : styles.disabledStart} 
+                onClick={prepareOrder}>
+                    Empezar a preparar                            
+                </button>                        
+                <button 
+                className={(props.orders.length) && (props.orders[props.orderPosition].state === "in preparation") ? styles.buttonSendToDeliver : styles.disabledSend} 
+                onClick={sendOrder}>
+                    Pedido Preparado
+                </button>
+            </div>
         </div>
     )
 }

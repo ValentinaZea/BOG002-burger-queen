@@ -9,10 +9,10 @@ import db from '../../firebase';
 function Chef () {
     const [orders, setOrders] = useState([]);
     const [orderPosition, setOrderPosition] = useState(0);
-    const role = "chef";
-    
+    const role = "chef";    
+            
     function retrieveOrders (){
-        const ref = db.collection('orders').orderBy("requestTime", "asc")
+        const ref = db.collection('orders').where('state', 'in', ['in preparation', 'to prepare']).orderBy("requestTime", "asc");
         return ref.onSnapshot((querySnapshot) => { 
             const ordersN = [];  
             querySnapshot.forEach((doc) => {
@@ -24,13 +24,14 @@ function Chef () {
         })
     }
     useEffect(retrieveOrders, []);
+    
     return(
         <div className="main-background">
             <NavBar role={role}></NavBar>
             <ComponentsTitle leftTitle={'HISTORIAL DE PEDIDOS'} rightTitle={'DETALLE DE LA ORDEN'}></ComponentsTitle>
             <div className="bodyContainer">
                 <OrderHistory orders={orders} setOrderPosition={setOrderPosition} />
-                <OrderDetail orders={orders}  orderPosition={orderPosition} />
+                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition}/>
             </div>
         </div>
     )

@@ -26,18 +26,24 @@ $font-size: 1.2rem;
     font-size: $font-size;
 }
 
+.boxProducts{
+    max-height: 550px;
+    overflow-y: scroll;
+}
+
 .headerOrder{
     border-radius: 20px 20px 0px 0px;
     background-color: $primary-color;
     color: $fourth-color;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     // align-items: center;
 }
 
 .bodyOrder{
     background-color: $third-color;
     margin: 0.5rem 0px;
-    overflow: auto;
     padding: 0rem 2rem;
 }
 
@@ -51,7 +57,9 @@ $font-size: 1.2rem;
     display: grid;
     grid-template-columns: 45% 30% 25%;
     align-items: center;
-    justify-items: center;
+    p, input{
+        justify-self: center;
+    }
 }
 
 .additionsContainer{
@@ -64,3 +72,67 @@ $font-size: 1.2rem;
         padding: 0px;
     }
 }
+.buttonsDown{
+    // height: 8%;
+    // width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@mixin buttons($url_image, $border){
+    width: 100%;
+    height: 85%;
+    background-size: cover;
+    border-radius: $border;
+    text-align: center;
+    background-image: url($url_image);
+    background-color: transparent;
+    border: none;
+    align-self: center;
+    font-family: $font;
+    font-size: 1.2rem;
+}
+
+.buttonCancelOrder{
+    $url: "../../assets/images/buttonH-left-down.png";
+    $border : 0px 0px 0px 50px;
+    @include buttons($url, $border);
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+.disabledStart{
+    $url: "../../assets/images/buttonH-left-down.png";
+    $border : 0px 0px 50px 0px;
+    @include buttons($url, $border);
+    opacity : 0.5;
+}
+
+.buttonSendToDeliver {
+    $url: "../../assets/images/buttonH-right-down.png";
+    $border : 0px 0px 50px 0px;
+    @include buttons($url, $border);
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.disabledSend{
+    $url: "../../assets/images/buttonH-right-down.png";
+    $border : 0px 0px 50px 0px;
+    @include buttons($url, $border);
+    opacity : 0.5;
+}
+
+.none{
+    display: none;
+}
+
+.checkbox{
+    display:block;
+}
+
