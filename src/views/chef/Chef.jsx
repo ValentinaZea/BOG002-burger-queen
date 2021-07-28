@@ -10,7 +10,6 @@ function Chef () {
     const [orders, setOrders] = useState([]);
     const [orderPosition, setOrderPosition] = useState(0);
     const role = "chef";    
-            
     function retrieveOrders (){
         const ref = db.collection('orders').where('state', 'in', ['in preparation', 'to prepare']).orderBy("requestTime", "asc");
         return ref.onSnapshot((querySnapshot) => { 
@@ -30,8 +29,8 @@ function Chef () {
             <NavBar role={role}></NavBar>
             <ComponentsTitle leftTitle={'HISTORIAL DE PEDIDOS'} rightTitle={'DETALLE DE LA ORDEN'}></ComponentsTitle>
             <div className="bodyContainer">
-                <OrderHistory orders={orders} setOrderPosition={setOrderPosition} />
-                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition}/>
+                <OrderHistory orders={orders} orderPosition={orderPosition} setOrderPosition={setOrderPosition} />
+                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition} role={role}/>
             </div>
         </div>
     )

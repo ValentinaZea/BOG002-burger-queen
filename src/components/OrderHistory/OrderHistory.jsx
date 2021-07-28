@@ -1,20 +1,21 @@
 import React from 'react'
 import styles from '../OrderHistory/OrderHistory.module.scss';
 import Icon from '../../assets/images/cooking.png';
+import NoOrdersIcon from '../../assets/images/bocadillo.png'
 
-function OrderHistory({orders, setOrderPosition}) {
+function OrderHistory({orders, setOrderPosition, orderPosition}) {
     return(          
         <div className={styles.hamburgerContainer}>
                 <div className={styles.headerOrder}>
-                    <h3>ID pedido</h3>
-                    <h3>Hora Petición</h3>
+                    <p>ID pedido</p>
+                    <p>Hora Petición</p>
                 </div>
                 <div className={styles.bodyOrder}> 
                     {   
-                        orders ? (
+                        orders.length > 0 ? (
                             orders.map((elem, key)=>{
                                     return(
-                                        <div key={key} className={styles.itemContainer}> 
+                                        <div key={key} className={key === orderPosition ? styles.itemContainerSelected : styles.itemContainerNoSelected }> 
                                             <p>{elem.id}</p> 
                                             <img src={Icon} alt="cooking" className={elem.state === "in preparation" ? styles.cooking : styles.none} />
                                             <p>{elem.requestTime.toDate().toLocaleTimeString()}</p>
@@ -23,8 +24,9 @@ function OrderHistory({orders, setOrderPosition}) {
                                     )
                                 })
                         ) : (  
-                        <div className={styles.itemContainer}>
-                            <p>Nulo en operador ternario</p> 
+                        <div className={styles.emptyContainer}>
+                            <h2>No hay órdenes por procesar</h2> 
+                            <img src={NoOrdersIcon} alt="cooking" className={styles.noOrdersIcon}></img>
                         </div> 
                         )
                         

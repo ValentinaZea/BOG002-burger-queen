@@ -24,8 +24,6 @@ hr {
 }
 
 .headerOrder{
-    // width: 80%;
-    // height: 8%;
     display: grid;
     grid-template-columns: 70% 30%;
 }
@@ -36,9 +34,9 @@ hr {
     grid-template-columns: repeat(2, 1fr);
 }
 
-@mixin buttons($url_image, $border){
+@mixin buttons($url_image, $border, $height){
     width: 100%;
-    height: 85%;
+    height: $height;
     background-size: cover;
     border-radius: $border;
     text-align: center;
@@ -53,7 +51,8 @@ hr {
 .buttonCancelOrder{
     $url: "../../assets/images/buttonH-left-down.png";
     $border : 0px 0px 0px 50px;
-    @include buttons($url, $border);
+    $height: 85%;
+    @include buttons($url, $border, $height);
     filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
     &:active{
         transform: translateY(-1px);
@@ -64,7 +63,8 @@ hr {
 .buttonSendToKitchen {
     $url: "../../assets/images/buttonH-right-down.png";
     $border : 0px 0px 50px 0px;
-    @include buttons($url, $border);
+    $height: 85%;
+    @include buttons($url, $border, $height);
     filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
     &:active{
         transform: translateY(-1px);
@@ -75,12 +75,14 @@ hr {
 .customerName{
     $url: "../../assets/images/costumer-name.png";
     $border : 50px 0px 0px 0px;
-    @include buttons($url, $border);
+    $height: 100%;
+    @include buttons($url, $border, $height);
 }
 .divDropdown{
     $url: "../../assets/images/table-number.png";
     $border : 0px 50px 0px 0px;
-    @include buttons($url, $border);
+    $height: 100%;
+    @include buttons($url, $border, $height);
 }
 
 .bodyOrder{
@@ -99,6 +101,7 @@ hr {
     h2 {
         padding: 0px;
         margin: 0px;
+        color:$secundary-color;
     }
 }
 

@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React, { useState } from 'react';
 import styles from './order.module.scss';
 import PopUp from '../PopUp/popUp.jsx';
 

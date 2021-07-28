@@ -26,29 +26,34 @@ $font:  "Inter", sans-serif;
 }
 
 .headerOrder{
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 60px 60px 0px 0px;
     background-color: $primary-color;
     display: grid;
     grid-template-columns: 38% 50%;
     text-align: center;
     align-items: center;
-    color: fourth-color;
+    color: $fourth-color;
+    p{
+        margin: 0px;
+        padding: 0px;
+    }
 }
 
 .bodyOrder{
     background-color: $third-color;
     margin: 0.5rem 0px;
     overflow: auto;
-    max-height: 612px;
+    max-height: 616px;
 }
 
-.itemContainer{
+@mixin orderSelected($background){
     display: grid;
     grid-template-columns: 35% 15% 20% 30%;
     justify-items: center;
     align-items: center;
     color: $secundary-color;
     padding: 0.5rem 2rem;
+    background-color: $background;
     p{
         width: 100%;
         white-space: nowrap;
@@ -57,10 +62,19 @@ $font:  "Inter", sans-serif;
         text-align: center;
     }
 }
+.itemContainerSelected{
+    $background: rgba(255, 245, 210, 0.4);
+    @include orderSelected($background);
+}
+.itemContainerNoSelected{
+    $background: transparent;
+    @include orderSelected($background);
+}
 
 .footerOrder{
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 60px 60px;
     background-color: $primary-color;
+    height: 85%;
 }
 
 .cooking{
@@ -97,5 +111,14 @@ $font:  "Inter", sans-serif;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
 }
+.emptyContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
 
-
+.noOrdersIcon{
+    width: 50%;
+}
