@@ -9,7 +9,15 @@ import db from '../../firebase';
 function Chef () {
     const [orders, setOrders] = useState([]);
     const [orderPosition, setOrderPosition] = useState(0);
-    const role = "chef";    
+    const [checkedState, setCheckedState] = useState([]);
+    const [chefName, setChefName] = useState("")
+    const role = "chef";   
+    
+    window.onload = () =>{
+        const newNameChef= prompt("Nombre del Chef");
+        setChefName(newNameChef)        
+    }
+    
     function retrieveOrders (){
         const ref = db.collection('orders').where('state', 'in', ['in preparation', 'to prepare']).orderBy("requestTime", "asc");
         return ref.onSnapshot((querySnapshot) => { 
@@ -23,14 +31,15 @@ function Chef () {
         })
     }
     useEffect(retrieveOrders, []);
-    
+
     return(
         <div className="main-background">
             <NavBar role={role}></NavBar>
             <ComponentsTitle leftTitle={'HISTORIAL DE PEDIDOS'} rightTitle={'DETALLE DE LA ORDEN'}></ComponentsTitle>
             <div className="bodyContainer">
-                <OrderHistory orders={orders} orderPosition={orderPosition} setOrderPosition={setOrderPosition} />
-                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition} role={role}/>
+                <OrderHistory orders={orders} orderPosition={orderPosition} setOrderPosition={setOrderPosition} checkedState={checkedState} setCheckedState={setCheckedState} />
+                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition} role={role} chefName={chefName}
+                checkedState={checkedState} setCheckedState={setCheckedState} />
             </div>
         </div>
     )

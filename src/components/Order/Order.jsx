@@ -45,7 +45,7 @@ function Order(props) {
                 alert("Por favor llene todos los campos")
             }
             else{
-                let confirmedOrder = {client: client, table: table, state:'to prepare', order: [...props.orderedProducts], requestTime: new Date()};
+                let confirmedOrder = {client: client, table: table, state:'to prepare', order: [...props.orderedProducts], requestTime: new Date(), chef: ""};
                 setItemPopUp(confirmedOrder);
                 setPopUp(!popUp);
                 setTitlePopUp("Confirmacion Pedido")
