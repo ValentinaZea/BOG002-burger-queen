@@ -19,7 +19,10 @@ function OrderHistory({orders, setOrderPosition, orderPosition}) {
                                             <p>{elem.id}</p> 
                                             <img src={Icon} alt="cooking" className={elem.state === "in preparation" ? styles.cooking : styles.none} />
                                             <p>{elem.requestTime.toDate().toLocaleTimeString()}</p>
-                                            <button className={styles.detailProduct} onClick={()=>setOrderPosition(key)}>Ver Pedido</button>
+                                            <button className={styles.detailProduct} onClick={()=>{
+                                                setOrderPosition(key)
+                                            }
+                                                }>Ver Pedido</button>
                                         </div> 
                                     )
                                 })

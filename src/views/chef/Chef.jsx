@@ -9,7 +9,6 @@ import db from '../../firebase';
 function Chef () {
     const [orders, setOrders] = useState([]);
     const [orderPosition, setOrderPosition] = useState(0);
-    const [checkedState, setCheckedState] = useState([]);
     const [chefName, setChefName] = useState("")
     const role = "chef";   
     
@@ -37,9 +36,8 @@ function Chef () {
             <NavBar role={role}></NavBar>
             <ComponentsTitle leftTitle={'HISTORIAL DE PEDIDOS'} rightTitle={'DETALLE DE LA ORDEN'}></ComponentsTitle>
             <div className="bodyContainer">
-                <OrderHistory orders={orders} orderPosition={orderPosition} setOrderPosition={setOrderPosition} checkedState={checkedState} setCheckedState={setCheckedState} />
-                <OrderDetail orders={orders}  orderPosition={orderPosition} setOrderPosition={setOrderPosition} role={role} chefName={chefName}
-                checkedState={checkedState} setCheckedState={setCheckedState} />
+                <OrderHistory orders={orders} orderPosition={orderPosition} setOrderPosition={setOrderPosition}/>
+                <OrderDetail orders={orders}  setOrders={setOrders} orderPosition={orderPosition} setOrderPosition={setOrderPosition} role={role} chefName={chefName} />
             </div>
         </div>
     )

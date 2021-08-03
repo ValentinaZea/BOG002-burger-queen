@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './OrderDetail.module.scss'
 import db from '../../firebase';
+import CheckBox from '../checkBox/CheckBox';
 
 function OrderDetail(props) { 
     const [finishedOrder, setFinishedOrder] = useState([])
@@ -20,16 +21,6 @@ function OrderDetail(props) {
         }
     }
 
-    const HandleOnChange = (position) => {
-        // console.log("position",position)
-        const newArrayChecked = [...props.checkedState];
-        const updatedCheckedState = props.checkedState[props.orderPosition].map((item, index) =>
-            index === position ? !item : item
-        );
-        newArrayChecked[props.orderPosition] = updatedCheckedState;
-        props.setCheckedState(newArrayChecked);
-    }
-
     // console.log(props.checkedState[props.orderPosition])
     // if(((props.orders.length) > 0) && (props.orders[props.orderPosition].state === "in preparation") && (props.checkedState[props.orderPosition] !== undefined)){
     //     let checker = props.checkedState[props.orderPosition].every(v => v === true);
@@ -41,10 +32,7 @@ function OrderDetail(props) {
     function prepareOrder(){
         if((props.orders.length > 0) && (props.orders[props.orderPosition].state === "to prepare")){
             changeFirebase("in preparation");
-            let newArrayChecked = [...props.checkedState]
-            newArrayChecked[props.orderPosition] = new Array(props.orders[props.orderPosition].order.length).fill(false);
-            props.setCheckedState(newArrayChecked)
-        }                
+        }          
     }
     function orderServed(){
         
@@ -77,6 +65,8 @@ function OrderDetail(props) {
                         props.orders.length > 0 ? 
                         (props.orders[props.orderPosition].order.map((elem, key)=>{
                             let itemDetail = [];
+                            elem.checked = elem.checked ? elem.checked : false;
+                            const checked2 = elem.checked ? "checked":""
                             if( (elem.hasOwnProperty('type')) && (elem.hasOwnProperty('additions'))){
                                 itemDetail = [elem.type, elem.additions]
                             }
@@ -89,9 +79,11 @@ function OrderDetail(props) {
                                         <span>{elem.item}</span><span>{itemDetail}</span>
                                     </div>
                                     <p>{elem.ammount}</p>
-                                    <input
-                                    className={(props.orders[props.orderPosition].state === "in preparation") && (props.orders[props.orderPosition].chef === props.chefName) ? styles.checkbox : styles.none}
-                                    type="checkbox" onChange={() => HandleOnChange(key)} defaultChecked={props.checkedState > 0 ? props.checkedState[props.orderPosition][key] : false}></input>
+                                    <p>{elem.checked ?  "checked" : "no" }</p>
+                                    <input type="checkbox" defaultChecked={checked2}></input>
+                                    <CheckBox orders={props.orders} orderPosition={props.orderPosition} 
+                                    position={key} chefName={props.chefName} elem={elem} 
+                                    setOrders={props.setOrders}/>
                                 </div>
                             )
                         })) 
